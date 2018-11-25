@@ -54,10 +54,10 @@ public class QRCodeGenerator : NSObject {
     
     public func createImage(value:String, size:CGSize) -> QRImage? {
         let stringData = value.data(using: String.Encoding.isoLatin1, allowLossyConversion: true)
-        createImage(value: stringData, size: size)
+        return createImage(value: stringData, size: size)
     }
     
-    public func createImage(value:Data, size:CGSize) -> QRImage? {
+    public func createImage(value:Data?, size:CGSize) -> QRImage? {
         if let qrFilter = CIFilter(name: "CIQRCodeGenerator") {
             qrFilter.setDefaults()
             qrFilter.setValue(value, forKey: "inputMessage")
